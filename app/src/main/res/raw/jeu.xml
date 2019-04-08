@@ -2,10 +2,42 @@
 <root>
     <jeu>
         <texte1>
-            Sucer des bites
+            Les spécialités à Polytech Clermont
         </texte1>
-        <texte2>
-            OUI
-        </texte2>
+    </jeu>
+    <jeu>
+        <texte1>
+            Les répliques d'OSS 117
+        </texte1>
+    </jeu>
+    <jeu>
+        <texte1>
+            Les chaînes de la TNT
+        </texte1>
+    </jeu>
+    <jeu>
+        <texte1>
+            Les marques de Vodka
+        </texte1>
+    </jeu>
+    <jeu>
+        <texte1>
+            Les nombres pairs premiers entre 12 et 16
+        </texte1>
+    </jeu>
+    <jeu>
+        <texte1>
+            Les marques de pastis
+        </texte1>
+    </jeu>
+    <jeu>
+        <texte1>
+            Les fruits à conotation sexuel
+        </texte1>
+    </jeu>
+    <jeu>
+        <texte1>
+            Les marques de céréales
+        </texte1>
     </jeu>
 </root>

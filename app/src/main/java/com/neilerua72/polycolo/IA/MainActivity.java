@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.neilerua72.polycolo.NF.XML.LectureJeu;
 import com.neilerua72.polycolo.R;
 import com.neilerua72.polycolo.ScreenGame;
 
@@ -25,10 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         EditText nom1 = new EditText(this);
         nom1.setHint("Nom 1");
+        nom1.setText("Aurélien");
         EditText nom2 = new EditText(this);
         nom2.setHint("Nom 2");
+        nom2.setText("Maxime");
         EditText nom3 = new EditText(this);
         nom3.setHint("Nom 3");
+        nom3.setText("Pierre");
         LinearLayout verti = (LinearLayout)findViewById(R.id.containEdit);
         verti.addView(nom1,0);
         verti.addView(nom2,1);
@@ -66,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 

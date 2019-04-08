@@ -17,6 +17,13 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/typeJeu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:visibility="invisible" />
+
+        <TextView
             android:id="@+id/main_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,7 +31,7 @@
             android:keepScreenOn="true"
             android:text="@string/dummy_content"
             android:textColor="#33b5e5"
-            android:textSize="50sp"
+            android:textSize="35sp"
             android:textStyle="bold" />
     </LinearLayout>
 
