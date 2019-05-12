@@ -1,4 +1,4 @@
-package com.neilerua72.polycolo;
+package com.neilerua72.polycolo.IA;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -17,10 +17,15 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.neilerua72.polycolo.NF.ActionJeu;
 import com.neilerua72.polycolo.NF.Jeu;
 import com.neilerua72.polycolo.NF.Regle;
 import com.neilerua72.polycolo.NF.TypeJeu;
+import com.neilerua72.polycolo.NF.Vote;
 import com.neilerua72.polycolo.NF.XML.LectureJeu;
+import com.neilerua72.polycolo.NF.XML.LecturePourcmb;
+import com.neilerua72.polycolo.NF.XML.LectureVote;
+import com.neilerua72.polycolo.R;
 
 import java.util.ArrayList;
 
@@ -29,7 +34,7 @@ import java.util.ArrayList;
  * status bar and navigation/system bar) with user interaction.
  */
 public class ScreenGame extends Activity {
-
+    private ScreenGame sg;
     private TextView text ;
     private TextView textType;
     private FrameLayout layout;
@@ -37,8 +42,11 @@ public class ScreenGame extends Activity {
     private ArrayList<String> listeJoueur;
     private ArrayList<Regle> listeRegle;
     private ArrayList<Integer> listeDejaJoue;
+    int nbClick=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Initialisation de l'interface
          listeRegle = new ArrayList<>();
         listeDejaJoue = new ArrayList<>();
         super.onCreate(savedInstanceState);
@@ -48,11 +56,20 @@ public class ScreenGame extends Activity {
 
         Intent intent = this.getIntent();
         listeJoueur=new ArrayList<>();
+
+        //Récupération des données
         if(intent!=null){
             listeJoueur=intent.getStringArrayListExtra("listeJoueur");
         }
+        //Initialisation des règles
         LectureJeu lectureJeu = new LectureJeu(this);
+        LectureVote lectureVote = new LectureVote(this);
+        LecturePourcmb lecturePourcmb = new LecturePourcmb(this);
+
+        //Ajout de toutes les règles à une seule et unique liste
         listeRegle=lectureJeu.getListeJeu();
+        listeRegle.addAll(lectureVote.getListeVote());
+        listeRegle.addAll(lecturePourcmb.getListePourcmb());
         setContentView(R.layout.activity_screen_game);
 
         text = (TextView)  findViewById(R.id.main_text);
@@ -60,30 +77,13 @@ public class ScreenGame extends Activity {
         text.setText("Bonne partie !");
         layout = (FrameLayout) findViewById(R.id.layout);
         linear = (LinearLayout) findViewById(R.id.linear);
+        this.sg=this;
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer result = 0;
-                do{
-                    int nombreAleatoire = (int)(Math.random() * (listeRegle.size()-1 + 1));
-                    result=nombreAleatoire;
-                }while (listeDejaJoue.contains(result));
-                listeDejaJoue.add(result);
-                Regle r = listeRegle.get(result);
-                TypeJeu typeJeu = r.getTypeJeu();
-                textType.setText(typeJeu.toString());
-                textType.setVisibility(View.VISIBLE);
-                switch (typeJeu){
-                    case JEU:
-                        layout.setBackgroundColor(Color.GREEN);
-                        Jeu jeu = (Jeu)r;
-
-
-                        text.setText(jeu.getTexte1()+".\n"+getString(R.string.repete)+" "+nombreAlea(2,5)+" "+getString(R.string.gorgees)+" "+listeJoueur.get(nombreAlea(0,listeJoueur.size()-1))+" "+getString(R.string.commence));
-                        break;
-                        default:
-                            break;
-                }
+                ActionJeu actionJeu=new ActionJeu(sg);
+                actionJeu.click();
+                nbClick++;
             }
         });
 
@@ -93,5 +93,34 @@ public class ScreenGame extends Activity {
         return min + (int)(Math.random() * ((max- min) + 1));
     }
 
+    public TextView getText() {
+        return text;
+    }
 
+    public TextView getTextType() {
+        return textType;
+    }
+
+    public FrameLayout getLayout() {
+        return layout;
+    }
+
+    public LinearLayout getLinear() {
+        return linear;
+    }
+
+    public ArrayList<String> getListeJoueur() {
+        return listeJoueur;
+    }
+
+    public ArrayList<Regle> getListeRegle() {
+        return listeRegle;
+    }
+
+    public ArrayList<Integer> getListeDejaJoue() {
+        return listeDejaJoue;
+    }
+    public int getNbClick(){
+        return nbClick;
+    }
 }

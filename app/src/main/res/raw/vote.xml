@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<vote>
+    <texte1>
+        Manger un cheval
+    </texte1>
+    <texte2>
+        Manger un insecte
+    </texte2>
+</vote>
+    <vote>
+        <texte1>
+            Pécho Manon
+        </texte1>
+        <texte2>
+            Pécho Claclou
+        </texte2>
+    </vote>
+    <vote>
+        <texte1>
+            8.6
+        </texte1>
+        <texte2>
+            Koe
+        </texte2>
+    </vote>
+    <vote>
+        <texte1>
+            Manger un cheval
+        </texte1>
+        <texte2>
+            Manger un insecte
+        </texte2>
+    </vote>
+    <vote>
+        <texte1>
+            boire de la suze
+        </texte1>
+        <texte2>
+            boire du vrai alcool
+        </texte2>
+    </vote>
+</root>

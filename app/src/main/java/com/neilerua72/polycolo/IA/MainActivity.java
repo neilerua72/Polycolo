@@ -1,19 +1,14 @@
 package com.neilerua72.polycolo.IA;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.neilerua72.polycolo.NF.XML.LectureJeu;
 import com.neilerua72.polycolo.R;
-import com.neilerua72.polycolo.ScreenGame;
 
 import java.util.ArrayList;
 
