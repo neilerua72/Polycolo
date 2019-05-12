@@ -81,8 +81,18 @@ public class ScreenGame extends Activity {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int seuil = 10;
+                if(nbClick<seuil){
                 ActionJeu actionJeu=new ActionJeu(sg);
-                actionJeu.click();
+                actionJeu.click();}
+                else if(nbClick==seuil){
+                    sg.getTextType().setVisibility(View.INVISIBLE);
+                    sg.getText().setText("Fin de la partie");
+                    sg.getLayout().setBackgroundColor(Color.rgb(0,0,0));
+                }
+                else{
+                    finish();
+                }
                 nbClick++;
             }
         });
